@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.centered-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#container {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid darkgray;
+}
+
+.vertical-element{
+    display: flex;
+    flex: 1;
+}
+
+.grid{
+    flex: 1;
+    margin: 0;
+}
+
+.title{
+    margin: 0;
+}
