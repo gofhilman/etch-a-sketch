@@ -7,6 +7,7 @@ function createGrids(n) {
         for (let j=0; j<n; j++) {
             const grid = document.createElement('div');
             grid.setAttribute('class', 'grid');
+            grid.style.opacity = '0';
             verticalElement.appendChild(grid);
         }
     }
@@ -16,9 +17,28 @@ function createGrids(n) {
 function sketchGrids() {
     grids.forEach((grid) => {
         grid.addEventListener('mouseenter', (e) => {
-            e.target.style.backgroundColor = 'gray';
+            e.target.style.backgroundColor = randomizeColor();
+            e.target.style.opacity = `${increaseOpacity(+e.target.style.opacity)}`;
         });
     });
+}
+
+// Function to randomize sketch color
+function randomizeColor() {
+    let randomRGBNumber = [];
+    for(let i=0; i<3; i++) {
+        randomRGBNumber.push(Math.floor(256*Math.random()));
+    }
+    return `rgb(${randomRGBNumber[0]},${randomRGBNumber[1]},${randomRGBNumber[2]})`;
+}
+
+// Function to increase opacity
+function increaseOpacity(lastOpacity) {
+    if (lastOpacity != 0 && (lastOpacity*10)%1 == 0) {
+        return lastOpacity += 0.1;
+    } else {
+        return 0.1;
+    }
 }
 
 // Create the grids
@@ -33,7 +53,9 @@ sketchGrids();
 // Create an event listener to the play button
 const playButton = document.querySelector('.button');
 playButton.addEventListener('click', () => {
-    n = +prompt('You will sketch in n\u00D7n grids. Input n number!');
+    do {
+        n = +prompt('You will sketch in n\u00D7n grids. Input n number! (maximum 100)');
+    } while (n>100 || isNaN(n));   
     container.replaceChildren();
     createGrids(n);
     grids = document.querySelectorAll('.grid');
