@@ -18,7 +18,7 @@ function sketchGrids() {
     grids.forEach((grid) => {
         grid.addEventListener('mouseenter', (e) => {
             e.target.style.backgroundColor = randomizeColor();
-            e.target.style.opacity = `${increaseOpacity(+e.target.style.opacity)}`;
+            e.target.style.opacity = `${+e.target.style.opacity+0.1}`;
         });
     });
 }
