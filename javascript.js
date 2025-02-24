@@ -32,15 +32,6 @@ function randomizeColor() {
     return `rgb(${randomRGBNumber[0]},${randomRGBNumber[1]},${randomRGBNumber[2]})`;
 }
 
-// Function to increase opacity
-function increaseOpacity(lastOpacity) {
-    if (lastOpacity != 0 && (lastOpacity*10)%1 == 0) {
-        return lastOpacity += 0.1;
-    } else {
-        return 0.1;
-    }
-}
-
 // Create the grids
 const container = document.querySelector('#container');
 let n = 16;
